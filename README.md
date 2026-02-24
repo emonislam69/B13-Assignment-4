@@ -12,3 +12,15 @@ These three steps are used for creating and inserting elements:
 i. Create: let div = document.createElement('div');
 ii. Content: div.innerText = 'New Element';
 iii. Insert: document.body.appendChild(div); (or prepend to add at the start).
+
+3. Event Bubbling
+**Answer**
+Event bubbling  is the process where an event starts from the specific target element and then moves through its parents in the DOM tree.
+Order: Target →→ Parent →→ Body →→ Document.
+
+4. Event Delegation
+**Answer**
+Event Delegation is a technique of adding a single event listener to a parent element instead of adding multiple listeners to individual child elements.
+Usefulness:
+Memory Efficiency: Uses less memory by reducing the number of listeners.
+Dynamic Elements: Automatically works for new child elements added to the DOM later.
