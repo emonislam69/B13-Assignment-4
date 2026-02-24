@@ -18,3 +18,45 @@ const rejectedCountEl = document.getElementById('rejected-count');
 const jobStatusCountEl = document.getElementById('job-status-count');
 const tabBtns = document.querySelectorAll('.tab-btn');
 
+function render() {
+
+    const total = jobs.length;
+    const interviewCount = jobs.filter(j => j.status === 'interview').length;
+    const rejectedCount = jobs.filter(j => j.status === 'rejected').length;
+
+    totalCountEl.innerText = total;
+    interviewCountEl.innerText = interviewCount;
+    rejectedCountEl.innerText = rejectedCount;
+   
+    let filteredJobs = jobs;
+    if (currentTab === 'interview') filteredJobs = jobs.filter(j => j.status === 'interview');
+    if (currentTab === 'rejected') filteredJobs = jobs.filter(j => j.status === 'rejected');
+
+    jobStatusCountEl.innerText = `${filteredJobs.length} jobs`;
+
+ 
+    if (filteredJobs.length === 0) {
+        jobsList.innerHTML = '';
+        emptyState.classList.remove('hidden');
+    } else {
+        emptyState.classList.add('hidden');
+        jobsList.innerHTML = filteredJobs.map(job => `
+            <div class="job-card">
+                <button class="delete-btn" onclick="deleteJob(${job.id})"><i class="fa-regular fa-trash-can"></i></button>
+                <h3>${job.company}</h3>
+                <p class="position">${job.position}</p>
+                <p class="meta">${job.location} • ${job.type} • ${job.salary}</p>
+                <div class="status-badge">${job.status === 'none' ? 'Not Applied' : job.status.toUpperCase()}</div>
+                <p class="desc">${job.desc}</p>
+                <div class="card-actions">
+                    <button class="btn btn-interview ${job.status === 'interview' ? 'active' : ''}" 
+                        onclick="updateStatus(${job.id}, 'interview')">INTERVIEW</button>
+                    <button class="btn btn-rejected ${job.status === 'rejected' ? 'active' : ''}" 
+                        onclick="updateStatus(${job.id}, 'rejected')">REJECTED</button>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+
