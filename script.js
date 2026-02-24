@@ -60,3 +60,29 @@ function render() {
 }
 
 
+window.updateStatus = (id, newStatus) => {
+    const job = jobs.find(j => j.id === id);
+    if (job.status === newStatus) {
+        job.status = 'none';
+    } else {
+        job.status = newStatus;
+    }
+    render();
+};
+
+
+window.deleteJob = (id) => {
+    jobs = jobs.filter(j => j.id !== id);
+    render();
+};
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTab = btn.getAttribute('data-tab');
+        render();
+    });
+});
+
+render();
