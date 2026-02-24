@@ -1,0 +1,152 @@
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #002C5C;
+    --card-bg: #FFFFFF;
+    --green: #10B981;
+    --red: #EF4444;
+    --border: #FFFFFF;
+}
+
+body {
+    font-family: "Geist", sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+h1 { text-align: center; margin-bottom: 2rem; }
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.stat-card p { margin: 0; color: #64748b; font-weight: 600; }
+.stat-card h2 { margin: 0.5rem 0 0; font-size: 2rem; }
+.text-green { color: var(--green); }
+.text-red { color: var(--red); }
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.tabs { margin-top: 10px; }
+.tab-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    background: white;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+.tab-btn.active { background: #3B82F6; color: white; border-color: #3B82F6; }
+
+#jobs-list { display: grid; gap: 1rem; }
+.job-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.job-card.hidden {
+     display: none; 
+}
+
+.delete-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.delete-btn:hover { color: var(--red); }
+
+.position { 
+    font-weight: lighter;
+    margin: 5px 0; 
+}
+.meta { 
+    font-size: 0.9rem; 
+    color: #64748b; 
+    margin-bottom: 10px;
+    font-weight: lighter;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.desc { font-size: 0.95rem; color: #475569; line-height: 1.5; }
+
+.card-actions .btn {
+    padding: 8px 16px;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-interview { 
+    border: 1.5px solid var(--green); 
+    color: var(--green); 
+}
+
+
+.btn-rejected { 
+    border: 1.5px solid var(--red); 
+    color: var(--red); 
+}
+
+
+.btn-interview.active { 
+    background-color: var(--green); 
+    color: #FFFFFF; 
+}
+
+.btn-rejected.active { 
+    background-color: var(--red); 
+    color: #FFFFFF; 
+}
+
+#empty-state {
+    text-align: center;
+    padding: 4rem;
+    background: white;
+    border-radius: 12px;
+}
+#empty-state img { width: 80px; opacity: 0.5; margin-bottom: 1rem; }
+.hidden { display: none !important; }
